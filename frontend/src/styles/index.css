@@ -1,0 +1,192 @@
+html {
+  font-size: 150%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: #f6f7f6;
+  color: #1c1e1b;
+}
+
+.page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.page-subtitle {
+  color: #4a4f4c;
+  margin: 0.25rem 0 0;
+}
+
+.page-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.language-switcher {
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.language-switcher a {
+  color: #4a4f4c;
+  text-decoration: none;
+}
+
+.language-switcher a.active {
+  color: #2a6f6f;
+  font-weight: 500;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #dee1df;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.status-safe {
+  background: #e2f2e6;
+  color: #1f6f3d;
+}
+
+.status-unsafe {
+  background: #fbe4e2;
+  color: #a3352b;
+}
+
+.status-closed {
+  background: #eceeed;
+  color: #4a4f4c;
+}
+
+.status-unknown {
+  background: #eceeed;
+  color: #4a4f4c;
+}
+
+.meta-text {
+  font-size: 0.8rem;
+  color: #4a4f4c;
+  margin: 0 0 6px;
+}
+
+.disclaimer-text {
+  font-size: 0.75rem;
+  color: #6f7370;
+  margin: 0;
+}
+
+.disclaimer-text a {
+  color: #2a6f6f;
+}
+
+.current-temp-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.feels-like-text {
+  font-size: 0.8rem;
+  color: #4a4f4c;
+  margin: 0 0 8px;
+}
+
+.current-temp {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.current-condition {
+  font-size: 0.85rem;
+  color: #4a4f4c;
+}
+
+.weather-stats-row {
+  display: flex;
+  gap: 16px;
+  font-size: 0.8rem;
+  color: #4a4f4c;
+  margin-bottom: 12px;
+}
+
+.forecast-toggle {
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #2a6f6f;
+  font-weight: 500;
+}
+
+.forecast-days {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #eceeed;
+}
+
+.forecast-day {
+  text-align: center;
+}
+
+.forecast-day-label {
+  font-size: 0.75rem;
+  color: #4a4f4c;
+  margin: 0;
+}
+
+.forecast-day-temps {
+  font-size: 0.8rem;
+  margin: 4px 0 0;
+}
+
+.current-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.forecast-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.loading-text,
+.error-text {
+  font-size: 0.85rem;
+  color: #6f7370;
+}

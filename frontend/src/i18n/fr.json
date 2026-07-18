@@ -1,0 +1,45 @@
+{
+  "site": {
+    "title": "Spotlight Alexandria",
+    "subtitle": "Conditions locales"
+  },
+  "swim": {
+    "cardTitle": "Baignade \u00e0 Island Park",
+    "status": {
+      "safe": "Baignade s\u00e9curitaire",
+      "unsafe": "Baignade non s\u00e9curitaire",
+      "closed": "Ferm\u00e9",
+      "not_monitored": "Non surveill\u00e9",
+      "unknown": "Statut inconnu"
+    },
+    "updated": "Mis \u00e0 jour {{time}}",
+    "staleNote": " (dernier statut connu - la v\u00e9rification a \u00e9chou\u00e9)",
+    "disclaimer": "Reproduction non officielle des donn\u00e9es du Bureau de sant\u00e9 de l'est de l'Ontario.",
+    "verifyLink": "V\u00e9rifiez sur eohu.ca",
+    "loadError": "Impossible de charger les conditions de baignade pour le moment.",
+    "loading": "Chargement..."
+  },
+  "weather": {
+    "cardTitle": "Aujourd'hui \u00e0 Alexandria",
+    "feelsLike": "Ressenti {{temp}}\u00b0C",
+    "wind": "Vent {{speed}} km/h",
+    "humidity": "Humidit\u00e9 {{percent}}%",
+    "forecastToggle": "Pr\u00e9visions sur 3 jours",
+    "loadError": "Impossible de charger la m\u00e9t\u00e9o pour le moment.",
+    "loading": "Chargement..."
+  },
+  "language": {
+    "en": "English",
+    "fr": "Fran\u00e7ais"
+  },
+  "relativeTime": {
+    "justNow": "\u00e0 l'instant",
+    "minutesAgo_one": "il y a {{count}} minute",
+    "minutesAgo_other": "il y a {{count}} minutes",
+    "hoursAgo_one": "il y a {{count}} heure",
+    "hoursAgo_other": "il y a {{count}} heures",
+    "daysAgo_one": "il y a {{count}} jour",
+    "daysAgo_other": "il y a {{count}} jours",
+    "unknown": "inconnu"
+  }
+}

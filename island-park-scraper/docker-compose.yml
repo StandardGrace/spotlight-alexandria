@@ -1,0 +1,11 @@
+services:
+  island-park-scraper:
+    build: .
+    container_name: island-park-scraper
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./data:/app/data
+    env_file:
+      - .env

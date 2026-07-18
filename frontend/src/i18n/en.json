@@ -1,0 +1,45 @@
+{
+  "site": {
+    "title": "Spotlight Alexandria",
+    "subtitle": "Local conditions"
+  },
+  "swim": {
+    "cardTitle": "Island Park swimming",
+    "status": {
+      "safe": "Safe for swimming",
+      "unsafe": "Unsafe for swimming",
+      "closed": "Closed",
+      "not_monitored": "Not monitored",
+      "unknown": "Status unknown"
+    },
+    "updated": "Updated {{time}}",
+    "staleNote": " (last known status - recheck failed)",
+    "disclaimer": "Unofficial mirror of data from the Eastern Ontario Health Unit.",
+    "verifyLink": "Verify at eohu.ca",
+    "loadError": "Couldn't load swim conditions right now.",
+    "loading": "Loading..."
+  },
+  "weather": {
+    "cardTitle": "Today in Alexandria",
+    "feelsLike": "Feels like {{temp}}\u00b0C",
+    "wind": "Wind {{speed}} km/h",
+    "humidity": "Humidity {{percent}}%",
+    "forecastToggle": "3-day forecast",
+    "loadError": "Couldn't load weather right now.",
+    "loading": "Loading..."
+  },
+  "language": {
+    "en": "English",
+    "fr": "Fran\u00e7ais"
+  },
+  "relativeTime": {
+    "justNow": "just now",
+    "minutesAgo_one": "{{count}} minute ago",
+    "minutesAgo_other": "{{count}} minutes ago",
+    "hoursAgo_one": "{{count}} hour ago",
+    "hoursAgo_other": "{{count}} hours ago",
+    "daysAgo_one": "{{count}} day ago",
+    "daysAgo_other": "{{count}} days ago",
+    "unknown": "unknown"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "location": "Alexandria, Ontario",
+  "current": {
+    "tempC": 22.8,
+    "feelsLikeC": 24.5,
+    "condition": {
+      "en": "Sunny",
+      "fr": "Ensoleillé"
+    },
+    "icon": "https://cdn.weatherapi.com/weather/64x64/day/113.png",
+    "windKph": 9,
+    "humidity": 44
+  },
+  "forecast": [
+    {
+      "date": "2026-07-16",
+      "maxTempC": 28.6,
+      "minTempC": 16.4,
+      "condition": {
+        "en": "Sunny",
+        "fr": "Ensoleillé"
+      },
+      "icon": "https://cdn.weatherapi.com/weather/64x64/day/113.png",
+      "chanceOfRainPct": 4
+    },
+    {
+      "date": "2026-07-17",
+      "maxTempC": 23.2,
+      "minTempC": 12.5,
+      "condition": {
+        "en": "Sunny",
+        "fr": "Ensoleillé"
+      },
+      "icon": "https://cdn.weatherapi.com/weather/64x64/day/113.png",
+      "chanceOfRainPct": 3
+    },
+    {
+      "date": "2026-07-18",
+      "maxTempC": 23.9,
+      "minTempC": 14,
+      "condition": {
+        "en": "Light rain shower",
+        "fr": "Averse légère"
+      },
+      "icon": "https://cdn.weatherapi.com/weather/64x64/day/353.png",
+      "chanceOfRainPct": 85
+    }
+  ],
+  "sourceLastUpdated": "2026-07-16 20:15",
+  "fetchedAt": "2026-07-17T00:30:00.624Z"
+}
