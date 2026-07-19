@@ -127,3 +127,24 @@ the approach is a container pattern that new ideas slot into as they arrive:
 - **Navigation infrastructure is added only once it's needed** — i.e. only
   once a second page actually exists — rather than pre-built for a
   hypothetical future sitemap.
+
+### Content / template separation
+
+The site's real value is the local content — restaurant listings, menus,
+and eventually photos supplied or licensed from local businesses — while
+most of the surrounding code (layout, i18n scaffolding, the card-grid
+pattern, the weather/scraper proxy pattern) is generic and not specific
+to any one town.
+
+- **Content and template are being kept separate on purpose.** Local
+  content and any licensed photo assets live outside the codebase
+  entirely, both to handle licensed material appropriately and to keep
+  the template reusable if this project is ever adapted for another
+  town down the line.
+- **Content is loaded through a config/data layer** rather than hardcoded
+  into the application, so the shared template doesn't carry any
+  town-specific data.
+- **Photo assets are stored and managed separately from the repo.** Some
+  images are used with permission from local business owners rather than
+  owned outright, so they're treated as licensed assets rather than files
+  committed to a public repository.
