@@ -20,4 +20,4 @@ What started as a portfolio project has grown into something with real commercia
 
 React, Node.js/Express, and — eventually — the full MERN stack.
 
-For architecture details, the full decision log, and the technical roadmap, see [TECHNICAL_DESIGN.md](./TECHNICAL_DESIGN.md).
+For architecture details, the full decision log, and the technical roadmap, see [TECHNICAL_DESIGN.md](docs/TECHNICAL_DESIGN.md).
