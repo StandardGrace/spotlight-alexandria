@@ -1,6 +1,6 @@
 # Spotlight Alexandria — Technical Design Document
 
-Full architecture, decision log, and roadmap. For a plain-language overview, see [README.md](./README.md).
+Full architecture, decision log, and roadmap. For a plain-language overview, see [README.md](README.md).
 
 ## Architecture
 
