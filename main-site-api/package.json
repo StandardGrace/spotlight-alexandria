@@ -5,12 +5,14 @@
   "type": "module",
   "main": "src/index.js",
   "engines": {
-    "node": ">=18"
+    "node": ">=22.13.0"
   },
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "ingest:restaurants": "node src/scripts/ingestRestaurants.js"
   },
   "dependencies": {
+    "@11ty/gray-matter": "^3.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
