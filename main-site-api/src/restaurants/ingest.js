@@ -70,19 +70,20 @@ export async function ingestRestaurants({ contentDir, dbFile }) {
 
   const insertRestaurant = db.prepare(`
     INSERT INTO restaurants
-      (id, name, phone, address, website, hours, last_verified, storefront_photo, source_file, updated_at)
+      (id, name_en, name_fr, phone, address, website, hours_en, hours_fr, about_en, about_fr, last_verified, storefront_photo, source_file, updated_at)
     VALUES
-      (:id, :name, :phone, :address, :website, :hours, :lastVerified, :storefrontPhoto, :sourceFile, :updatedAt)
+      (:id, :nameEn, :nameFr, :phone, :address, :website, :hoursEn, :hoursFr, :aboutEn, :aboutFr, :lastVerified, :storefrontPhoto, :sourceFile, :updatedAt)
   `);
   const insertCategory = db.prepare(`
-    INSERT INTO menu_categories (restaurant_id, category, sort_order) VALUES (?, ?, ?)
-  `);
-  const insertItem = db.prepare(`
-    INSERT INTO menu_items (category_id, name, description, photo, price, sort_order)
+    INSERT INTO menu_categories (restaurant_id, category_en, category_fr, note_en, note_fr, sort_order)
     VALUES (?, ?, ?, ?, ?, ?)
   `);
+  const insertItem = db.prepare(`
+    INSERT INTO menu_items (category_id, name_en, name_fr, description_en, description_fr, photo, price, sort_order)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  `);
   const insertVariant = db.prepare(`
-    INSERT INTO item_variants (item_id, label, price, sort_order) VALUES (?, ?, ?, ?)
+    INSERT INTO item_variants (item_id, label_en, label_fr, price, sort_order) VALUES (?, ?, ?, ?, ?)
   `);
 
   // node:sqlite has no db.transaction() helper (unlike better-sqlite3) -
@@ -102,11 +103,15 @@ export async function ingestRestaurants({ contentDir, dbFile }) {
         // with a bind parameter name.
         insertRestaurant.run({
           id: restaurant.id,
-          name: restaurant.name,
+          nameEn: restaurant.name.en,
+          nameFr: restaurant.name.fr,
           phone: restaurant.phone,
           address: restaurant.address,
           website: restaurant.website,
-          hours: restaurant.hours,
+          hoursEn: restaurant.hours.en,
+          hoursFr: restaurant.hours.fr,
+          aboutEn: restaurant.about?.en ?? null,
+          aboutFr: restaurant.about?.fr ?? null,
           lastVerified: restaurant.lastVerified,
           storefrontPhoto: restaurant.storefrontPhoto,
           sourceFile: restaurant.sourceFile,
@@ -114,21 +119,29 @@ export async function ingestRestaurants({ contentDir, dbFile }) {
         });
 
         restaurant.menu.forEach((category, ci) => {
-          const categoryId = insertCategory.run(restaurant.id, category.category, ci)
-            .lastInsertRowid;
+          const categoryId = insertCategory.run(
+            restaurant.id,
+            category.category.en,
+            category.category.fr,
+            category.note?.en ?? null,
+            category.note?.fr ?? null,
+            ci
+          ).lastInsertRowid;
 
           category.items.forEach((item, ii) => {
             const itemId = insertItem.run(
               categoryId,
-              item.name,
-              item.description ?? null,
+              item.name.en,
+              item.name.fr,
+              item.description?.en ?? null,
+              item.description?.fr ?? null,
               item.photo ?? null,
               item.price ?? null,
               ii
             ).lastInsertRowid;
 
             (item.variants ?? []).forEach((variant, vi) => {
-              insertVariant.run(itemId, variant.label, variant.price, vi);
+              insertVariant.run(itemId, variant.label.en, variant.label.fr, variant.price, vi);
             });
           });
         });

@@ -16,14 +16,29 @@ import { dirname } from "node:path";
 // request. Everything cascades from `restaurants`, which is what
 // ingest.js relies on to clear out a restaurant's old menu in one DELETE
 // before re-inserting the current one.
+// v2: every bilingual field gets a paired _en/_fr column rather than a
+// generic translations table - simpler queries at this scale, and it
+// mirrors how the parser already resolves fr's fallback-to-en before
+// this data ever arrives here (see parseRestaurant.js's
+// resolveBilingual). A field that's optional overall (about, note,
+// description) has both its _en and _fr columns nullable together -
+// either the field was omitted (both null) or it was present (both
+// populated, fr already resolved). Required bilingual fields (name,
+// hours, category, item name, variant label) are NOT NULL on both
+// columns, since resolveBilingual guarantees both whenever validation
+// succeeds at all.
 const SCHEMA = `
 CREATE TABLE IF NOT EXISTS restaurants (
   id TEXT PRIMARY KEY,
-  name TEXT NOT NULL,
+  name_en TEXT NOT NULL,
+  name_fr TEXT NOT NULL,
   phone TEXT NOT NULL,
   address TEXT NOT NULL,
   website TEXT,
-  hours TEXT NOT NULL,
+  hours_en TEXT NOT NULL,
+  hours_fr TEXT NOT NULL,
+  about_en TEXT,
+  about_fr TEXT,
   last_verified TEXT NOT NULL,
   storefront_photo TEXT NOT NULL,
   source_file TEXT NOT NULL,
@@ -33,15 +48,20 @@ CREATE TABLE IF NOT EXISTS restaurants (
 CREATE TABLE IF NOT EXISTS menu_categories (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   restaurant_id TEXT NOT NULL REFERENCES restaurants(id) ON DELETE CASCADE,
-  category TEXT NOT NULL,
+  category_en TEXT NOT NULL,
+  category_fr TEXT NOT NULL,
+  note_en TEXT,
+  note_fr TEXT,
   sort_order INTEGER NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS menu_items (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   category_id INTEGER NOT NULL REFERENCES menu_categories(id) ON DELETE CASCADE,
-  name TEXT NOT NULL,
-  description TEXT,
+  name_en TEXT NOT NULL,
+  name_fr TEXT NOT NULL,
+  description_en TEXT,
+  description_fr TEXT,
   photo TEXT,
   price REAL,
   sort_order INTEGER NOT NULL
@@ -50,7 +70,8 @@ CREATE TABLE IF NOT EXISTS menu_items (
 CREATE TABLE IF NOT EXISTS item_variants (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   item_id INTEGER NOT NULL REFERENCES menu_items(id) ON DELETE CASCADE,
-  label TEXT NOT NULL,
+  label_en TEXT NOT NULL,
+  label_fr TEXT NOT NULL,
   price REAL NOT NULL,
   sort_order INTEGER NOT NULL
 );

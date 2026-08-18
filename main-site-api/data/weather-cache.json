@@ -1,15 +1,15 @@
 {
   "location": "Alexandria, Ontario",
   "current": {
-    "tempC": 21.7,
-    "feelsLikeC": 23.7,
+    "tempC": 19.2,
+    "feelsLikeC": 20.5,
     "condition": {
-      "en": "Sunny",
+      "en": "Clear",
       "fr": "Dégagé"
     },
     "icon": "https://cdn.weatherapi.com/weather/64x64/night/113.png",
     "windKph": 4.7,
-    "humidity": 80
+    "humidity": 85
   },
   "forecast": [
     {
@@ -46,6 +46,6 @@
       "chanceOfRainPct": 89
     }
   ],
-  "sourceLastUpdated": "2026-08-17 20:15",
-  "fetchedAt": "2026-08-18T00:30:00.380Z"
+  "sourceLastUpdated": "2026-08-17 22:15",
+  "fetchedAt": "2026-08-18T02:30:00.377Z"
 }
