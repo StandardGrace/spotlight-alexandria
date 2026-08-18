@@ -151,7 +151,12 @@ export function parseRestaurantFile(filename, raw) {
 
   if (!isNonEmptyString(data.phone)) errors.push("phone is required");
   if (!isNonEmptyString(data.address)) errors.push("address is required");
-  if (!isNonEmptyString(data.storefrontPhoto)) errors.push("storefrontPhoto is required");
+  // Optional, not required: a restaurant should be able to go live before
+  // anyone's had a chance to visit and take a storefront photo. Omit the
+  // field entirely rather than pointing it at a placeholder image.
+  if (data.storefrontPhoto !== undefined && !isNonEmptyString(data.storefrontPhoto)) {
+    errors.push("storefrontPhoto must be a non-empty string when present");
+  }
   if (data.website !== undefined && !isNonEmptyString(data.website)) {
     errors.push("website must be a non-empty string when present");
   }
@@ -204,7 +209,7 @@ export function parseRestaurantFile(filename, raw) {
       hours,
       about,
       lastVerified,
-      storefrontPhoto: data.storefrontPhoto,
+      storefrontPhoto: data.storefrontPhoto ?? null,
       sourceFile: filename,
       menu,
     },

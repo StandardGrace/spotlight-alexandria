@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS restaurants (
   about_en TEXT,
   about_fr TEXT,
   last_verified TEXT NOT NULL,
-  storefront_photo TEXT NOT NULL,
+  storefront_photo TEXT,
   source_file TEXT NOT NULL,
   updated_at TEXT NOT NULL
 );

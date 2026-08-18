@@ -41,7 +41,7 @@ name:
 | `website` | string | no | Unchanged |
 | `hours` | bilingual string | yes | Still free text (v1 decision) — see the flagged note above |
 | `lastVerified` | date (`YYYY-MM-DD`) | yes | Unchanged |
-| `storefrontPhoto` | string (path) | yes | Unchanged |
+| `storefrontPhoto` | string (path) | no | Optional — a restaurant can go live before anyone's visited to take one. Omit the field entirely rather than pointing it at a placeholder image |
 | `about` | bilingual string | no | **New.** Free-text blurb — history, ambiance, whatever's worth saying. Omit entirely if there's nothing to add |
 | `menu` | array of categories | yes | Unchanged structurally; categories now support `note` (below) |
 

@@ -2,13 +2,13 @@
   "location": "Alexandria, Ontario",
   "current": {
     "tempC": 19.2,
-    "feelsLikeC": 20.5,
+    "feelsLikeC": 20,
     "condition": {
       "en": "Clear",
       "fr": "Dégagé"
     },
     "icon": "https://cdn.weatherapi.com/weather/64x64/night/113.png",
-    "windKph": 4.7,
+    "windKph": 7.2,
     "humidity": 85
   },
   "forecast": [
@@ -25,27 +25,27 @@
     },
     {
       "date": "2026-08-18",
-      "maxTempC": 24.9,
+      "maxTempC": 24.5,
       "minTempC": 14.5,
+      "condition": {
+        "en": "Sunny",
+        "fr": "Ensoleillé"
+      },
+      "icon": "https://cdn.weatherapi.com/weather/64x64/day/113.png",
+      "chanceOfRainPct": 10
+    },
+    {
+      "date": "2026-08-19",
+      "maxTempC": 21.3,
+      "minTempC": 15.4,
       "condition": {
         "en": "Overcast",
         "fr": "Couvert"
       },
       "icon": "https://cdn.weatherapi.com/weather/64x64/day/122.png",
-      "chanceOfRainPct": 18
-    },
-    {
-      "date": "2026-08-19",
-      "maxTempC": 20.5,
-      "minTempC": 15.5,
-      "condition": {
-        "en": "Mist",
-        "fr": "Brume"
-      },
-      "icon": "https://cdn.weatherapi.com/weather/64x64/day/143.png",
-      "chanceOfRainPct": 89
+      "chanceOfRainPct": 86
     }
   ],
-  "sourceLastUpdated": "2026-08-17 22:15",
-  "fetchedAt": "2026-08-18T02:30:00.377Z"
+  "sourceLastUpdated": "2026-08-17 22:45",
+  "fetchedAt": "2026-08-18T03:00:00.525Z"
 }
