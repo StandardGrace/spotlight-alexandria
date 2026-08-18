@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import conditionsRouter from "./routes/conditions.js";
 import weatherRouter from "./routes/weather.js";
+import restaurantsRouter from "./routes/restaurants.js";
 import { startWeatherJob } from "./jobs/weatherJob.js";
 
 const PORT = process.env.PORT || 4000;
@@ -13,6 +14,7 @@ app.use(cors({ origin: ALLOWED_ORIGIN }));
 
 app.use("/api/conditions", conditionsRouter);
 app.use("/api/weather", weatherRouter);
+app.use("/api/restaurants", restaurantsRouter);
 
 app.get("/health", (req, res) => {
   res.json({ ok: true });
