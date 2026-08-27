@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import NavBar from "./components/NavBar.jsx";
 import LocalConditionsPage from "./pages/LocalConditionsPage.jsx";
 import RestaurantsListPage from "./pages/RestaurantsListPage.jsx";
+import RestaurantDetailPage from "./pages/RestaurantDetailPage.jsx";
 
 const SUPPORTED_LANGUAGES = ["en", "fr"];
 
@@ -41,6 +42,7 @@ export default function App() {
         <Route path="/:lang" element={<LanguageLayout />}>
           <Route index element={<LocalConditionsPage />} />
           <Route path="restaurants" element={<RestaurantsListPage />} />
+          <Route path="restaurants/:id" element={<RestaurantDetailPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

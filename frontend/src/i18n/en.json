@@ -39,6 +39,11 @@
     "loading": "Loading...",
     "empty": "No restaurants listed yet."
   },
+  "restaurantDetail": {
+    "backToList": "← Back to restaurants",
+    "loadError": "Couldn't load this restaurant right now.",
+    "loading": "Loading..."
+  },
   "language": {
     "en": "English",
     "fr": "Fran\u00e7ais"

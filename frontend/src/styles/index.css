@@ -252,3 +252,121 @@ body {
   color: #4a4f4c;
   margin: 0;
 }
+
+.back-link {
+  display: inline-block;
+  color: #2a6f6f;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.restaurant-header {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.restaurant-header-photo {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+  background: #eceeed;
+}
+
+.restaurant-header-photo.restaurant-card-photo-placeholder {
+  font-size: 2.5rem;
+}
+
+.restaurant-meta {
+  font-size: 0.9rem;
+  color: #4a4f4c;
+  margin: 0 0 4px;
+}
+
+.restaurant-meta a {
+  color: #2a6f6f;
+}
+
+.restaurant-about {
+  font-size: 0.9rem;
+  margin: 8px 0 0;
+}
+
+.menu-category {
+  background: #ffffff;
+  border: 1px solid #dee1df;
+  border-radius: 12px;
+  padding: 0.5rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.menu-category-title {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.75rem 0;
+}
+
+.menu-category-note {
+  font-size: 0.85rem;
+  color: #4a4f4c;
+  margin: 0 0 0.75rem;
+}
+
+.menu-item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid #eceeed;
+}
+
+.menu-item-photo {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.menu-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.menu-item-name {
+  font-weight: 500;
+  margin: 0;
+}
+
+.menu-item-description {
+  font-size: 0.85rem;
+  color: #4a4f4c;
+  margin: 2px 0 0;
+}
+
+.menu-item-price {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.variant-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.variant-price {
+  font-weight: 600;
+}

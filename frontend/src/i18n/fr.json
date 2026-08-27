@@ -39,6 +39,11 @@
     "loading": "Chargement...",
     "empty": "Aucun restaurant r\u00e9pertori\u00e9 pour le moment."
   },
+  "restaurantDetail": {
+    "backToList": "\u2190 Retour aux restaurants",
+    "loadError": "Impossible de charger ce restaurant pour le moment.",
+    "loading": "Chargement..."
+  },
   "language": {
     "en": "English",
     "fr": "Fran\u00e7ais"
