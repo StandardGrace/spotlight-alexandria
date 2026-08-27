@@ -11,6 +11,22 @@ function pick(bilingual, lang) {
   return bilingual ? (lang === "fr" ? bilingual.fr : bilingual.en) : null;
 }
 
+// "Stale" means the info hasn't been reverified in 6+ months, per the
+// content model in TECHNICAL_DESIGN.md. setMonth() correctly handles
+// variable month lengths, so this doesn't need a fixed day count.
+function isStale(lastVerified) {
+  const verified = new Date(`${lastVerified}T00:00:00`);
+  const cutoff = new Date();
+  cutoff.setMonth(cutoff.getMonth() - 6);
+  return verified < cutoff;
+}
+
+function formatVerifiedDate(lastVerified, lang) {
+  const verified = new Date(`${lastVerified}T00:00:00`);
+  const locale = lang === "fr" ? "fr-CA" : "en-CA";
+  return new Intl.DateTimeFormat(locale, { dateStyle: "long" }).format(verified);
+}
+
 // Multi-variant items (different sizes, etc.) get one inline control
 // instead of a separate line per size - per TECHNICAL_DESIGN.md's
 // presentation-layer notes. There's no ordering/cart system on the site,
@@ -120,8 +136,13 @@ export default function RestaurantDetailPage() {
         </div>
       </div>
 
-      {/* lastVerified staleness notice is a separate, not-yet-built step -
-          deliberately not shown here yet. */}
+      {isStale(restaurant.lastVerified) && (
+        <p className="staleness-notice">
+          {t("restaurantDetail.staleNotice", {
+            date: formatVerifiedDate(restaurant.lastVerified, activeLang),
+          })}
+        </p>
+      )}
 
       {restaurant.menu.map((category, ci) => {
         const categoryName = pick(category.category, activeLang);

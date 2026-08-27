@@ -297,6 +297,16 @@ body {
   margin: 8px 0 0;
 }
 
+.staleness-notice {
+  background: #f5f1e8;
+  border: 1px solid #e6ddc6;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: #6b5f3f;
+  margin: 0 0 1.5rem;
+}
+
 .menu-category {
   background: #ffffff;
   border: 1px solid #dee1df;

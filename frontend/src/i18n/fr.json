@@ -42,7 +42,8 @@
   "restaurantDetail": {
     "backToList": "\u2190 Retour aux restaurants",
     "loadError": "Impossible de charger ce restaurant pour le moment.",
-    "loading": "Chargement..."
+    "loading": "Chargement...",
+    "staleNotice": "Derni\u00e8re v\u00e9rification le {{date}} \u2014 cela fait un moment, alors un bref appel pour confirmer les heures ou le menu est une bonne id\u00e9e."
   },
   "language": {
     "en": "English",

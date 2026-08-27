@@ -42,7 +42,8 @@
   "restaurantDetail": {
     "backToList": "← Back to restaurants",
     "loadError": "Couldn't load this restaurant right now.",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "staleNotice": "Last confirmed {{date}} — it's been a while, so it's worth a quick call ahead to confirm hours or menu details."
   },
   "language": {
     "en": "English",
