@@ -1,51 +1,51 @@
 {
   "location": "Alexandria, Ontario",
   "current": {
-    "tempC": 18.4,
-    "feelsLikeC": 19.4,
+    "tempC": 23.6,
+    "feelsLikeC": 22.4,
     "condition": {
-      "en": "Partly Cloudy",
-      "fr": "Partiellement nuageux"
+      "en": "Patchy rain nearby",
+      "fr": "Pluies éparses à proximité"
     },
-    "icon": "https://cdn.weatherapi.com/weather/64x64/night/116.png",
-    "windKph": 5.8,
-    "humidity": 87
+    "icon": "https://cdn.weatherapi.com/weather/64x64/day/176.png",
+    "windKph": 18,
+    "humidity": 66
   },
   "forecast": [
     {
-      "date": "2026-08-17",
-      "maxTempC": 24.9,
-      "minTempC": 18.4,
+      "date": "2026-08-27",
+      "maxTempC": 24.8,
+      "minTempC": 14.8,
+      "condition": {
+        "en": "Patchy rain nearby",
+        "fr": "Pluies éparses à proximité"
+      },
+      "icon": "https://cdn.weatherapi.com/weather/64x64/day/176.png",
+      "chanceOfRainPct": 57
+    },
+    {
+      "date": "2026-08-28",
+      "maxTempC": 20.5,
+      "minTempC": 12.3,
       "condition": {
         "en": "Sunny",
         "fr": "Ensoleillé"
       },
       "icon": "https://cdn.weatherapi.com/weather/64x64/day/113.png",
-      "chanceOfRainPct": 76
+      "chanceOfRainPct": 36
     },
     {
-      "date": "2026-08-18",
-      "maxTempC": 24.5,
-      "minTempC": 14.5,
+      "date": "2026-08-29",
+      "maxTempC": 22.3,
+      "minTempC": 10.6,
       "condition": {
         "en": "Sunny",
         "fr": "Ensoleillé"
       },
       "icon": "https://cdn.weatherapi.com/weather/64x64/day/113.png",
-      "chanceOfRainPct": 10
-    },
-    {
-      "date": "2026-08-19",
-      "maxTempC": 21.3,
-      "minTempC": 15.4,
-      "condition": {
-        "en": "Overcast",
-        "fr": "Couvert"
-      },
-      "icon": "https://cdn.weatherapi.com/weather/64x64/day/122.png",
-      "chanceOfRainPct": 86
+      "chanceOfRainPct": 11
     }
   ],
-  "sourceLastUpdated": "2026-08-17 23:15",
-  "fetchedAt": "2026-08-18T03:30:00.918Z"
+  "sourceLastUpdated": "2026-08-27 14:45",
+  "fetchedAt": "2026-08-27T19:01:38.372Z"
 }

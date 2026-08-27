@@ -28,6 +28,17 @@
     "loadError": "Impossible de charger la m\u00e9t\u00e9o pour le moment.",
     "loading": "Chargement..."
   },
+  "nav": {
+    "home": "Accueil",
+    "restaurants": "Restaurants"
+  },
+  "restaurants": {
+    "pageTitle": "Restaurants",
+    "pageSubtitle": "Menus des restaurants locaux \u00e0 Alexandria",
+    "loadError": "Impossible de charger les restaurants pour le moment.",
+    "loading": "Chargement...",
+    "empty": "Aucun restaurant r\u00e9pertori\u00e9 pour le moment."
+  },
   "language": {
     "en": "English",
     "fr": "Fran\u00e7ais"

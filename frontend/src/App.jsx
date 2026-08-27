@@ -1,11 +1,16 @@
-import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useParams, Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import NavBar from "./components/NavBar.jsx";
 import LocalConditionsPage from "./pages/LocalConditionsPage.jsx";
+import RestaurantsListPage from "./pages/RestaurantsListPage.jsx";
 
 const SUPPORTED_LANGUAGES = ["en", "fr"];
 
-function LanguageRoute() {
+// Shared per-language layout: sets the active language and <html lang>,
+// then renders the nav bar once with whichever page matched underneath it
+// (via Outlet) - the nav bar no longer needs to be duplicated per page.
+function LanguageLayout() {
   const { lang } = useParams();
   const { i18n } = useTranslation();
 
@@ -20,7 +25,12 @@ function LanguageRoute() {
     return <Navigate to="/en" replace />;
   }
 
-  return <LocalConditionsPage />;
+  return (
+    <>
+      <NavBar />
+      <Outlet />
+    </>
+  );
 }
 
 export default function App() {
@@ -28,7 +38,10 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/en" replace />} />
-        <Route path="/:lang" element={<LanguageRoute />} />
+        <Route path="/:lang" element={<LanguageLayout />}>
+          <Route index element={<LocalConditionsPage />} />
+          <Route path="restaurants" element={<RestaurantsListPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

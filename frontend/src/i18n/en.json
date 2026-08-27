@@ -28,6 +28,17 @@
     "loadError": "Couldn't load weather right now.",
     "loading": "Loading..."
   },
+  "nav": {
+    "home": "Home",
+    "restaurants": "Restaurants"
+  },
+  "restaurants": {
+    "pageTitle": "Restaurants",
+    "pageSubtitle": "Menus from local restaurants in Alexandria",
+    "loadError": "Couldn't load restaurants right now.",
+    "loading": "Loading...",
+    "empty": "No restaurants listed yet."
+  },
   "language": {
     "en": "English",
     "fr": "Fran\u00e7ais"

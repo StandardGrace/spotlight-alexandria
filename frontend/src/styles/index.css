@@ -34,6 +34,33 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.nav-bar {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.nav-links a {
+  color: #4a4f4c;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #2a6f6f;
+}
+
 .language-switcher {
   font-size: 0.85rem;
   white-space: nowrap;
@@ -189,4 +216,39 @@ body {
 .error-text {
   font-size: 0.85rem;
   color: #6f7370;
+}
+
+.restaurant-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.restaurant-card-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  background: #eceeed;
+}
+
+.restaurant-card-photo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #9aa09c;
+}
+
+.restaurant-card-name {
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.restaurant-card-phone {
+  font-size: 0.85rem;
+  color: #4a4f4c;
+  margin: 0;
 }

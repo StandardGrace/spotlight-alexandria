@@ -15,3 +15,19 @@ export async function fetchWeather() {
   }
   return res.json();
 }
+
+export async function fetchRestaurants() {
+  const res = await fetch(`${API_BASE_URL}/api/restaurants`);
+  if (!res.ok) {
+    throw new Error(`Failed to load restaurants (HTTP ${res.status})`);
+  }
+  return res.json();
+}
+
+export async function fetchRestaurant(id) {
+  const res = await fetch(`${API_BASE_URL}/api/restaurants/${id}`);
+  if (!res.ok) {
+    throw new Error(`Failed to load restaurant (HTTP ${res.status})`);
+  }
+  return res.json();
+}
