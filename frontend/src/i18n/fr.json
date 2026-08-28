@@ -45,6 +45,11 @@
     "loading": "Chargement...",
     "staleNotice": "Derni\u00e8re v\u00e9rification le {{date}} \u2014 cela fait un moment, alors un bref appel pour confirmer les heures ou le menu est une bonne id\u00e9e."
   },
+  "notFound": {
+    "title": "Page introuvable",
+    "message": "Cette page n'existe pas, ou le lien est peut-\u00eatre obsol\u00e8te.",
+    "backHome": "\u2190 Retour \u00e0 la page d'accueil"
+  },
   "language": {
     "en": "English",
     "fr": "Fran\u00e7ais"

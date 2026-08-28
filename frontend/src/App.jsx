@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar.jsx";
 import LocalConditionsPage from "./pages/LocalConditionsPage.jsx";
 import RestaurantsListPage from "./pages/RestaurantsListPage.jsx";
 import RestaurantDetailPage from "./pages/RestaurantDetailPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
 
 const SUPPORTED_LANGUAGES = ["en", "fr"];
 
@@ -43,6 +44,7 @@ export default function App() {
           <Route index element={<LocalConditionsPage />} />
           <Route path="restaurants" element={<RestaurantsListPage />} />
           <Route path="restaurants/:id" element={<RestaurantDetailPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

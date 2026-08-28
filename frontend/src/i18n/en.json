@@ -45,6 +45,11 @@
     "loading": "Loading...",
     "staleNotice": "Last confirmed {{date}} — it's been a while, so it's worth a quick call ahead to confirm hours or menu details."
   },
+  "notFound": {
+    "title": "Page not found",
+    "message": "That page doesn't exist, or the link might be out of date.",
+    "backHome": "\u2190 Back to the homepage"
+  },
   "language": {
     "en": "English",
     "fr": "Fran\u00e7ais"
