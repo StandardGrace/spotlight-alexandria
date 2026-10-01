@@ -5,3 +5,6 @@ node_modules/
 # content directory (RESTAURANT_CONTENT_DIR), never hand-edited.
 data/*.sqlite3
 data/*.sqlite3-*
+
+# Written by the weather job every 30 minutes - local runtime data, not source.
+data/weather-cache.json
