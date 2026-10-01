@@ -25,11 +25,6 @@ To verify:
 3. If it's wrong, the fix is almost always in `findRowAncestor()` or the
    `STATUS_PATTERNS` list in `src/scraper.js` - not a full rewrite.
 
-Since you're QA background, this is the exact kind of thing worth building
-a small fixture library for over time (safe / unsafe / closed / not
-monitored / off-season variants), so regressions get caught if EOHU
-changes their page layout.
-
 ## Endpoints
 
 - `GET /api/island-park` - latest status:

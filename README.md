@@ -1,89 +1,64 @@
-# island-park-scraper
+## Project Name
+Spotlight Alexandria
 
-Standalone Node service that checks the EOHU public beach water advisory
-page for Island Park (Alexandria) on a schedule and serves the latest
-status as small JSON API. Built to run decoupled from the main
-SpotlightAlexandria site/API, per the original plan.
+## Project Description
+A hyper-local website for my town — weather, swimming conditions, and restaurant menus, all in one place.
 
-## Before you trust this in production
+The site is built to be genuinely usable by the whole town, including older residents — that means larger text, clear layout, and full English/French support.
 
-I built the parser (`src/scraper.js`) without being able to see the real
-table/list markup around "Island Park" on the live EOHU page - only the
-surrounding boilerplate text was visible while writing this. The parser
-uses a generic "find the smallest element containing this text, then walk
-up to its row" strategy rather than a hardcoded CSS selector, so it should
-be reasonably resilient, but it needs to be checked against the real page
-before you rely on it.
+The project is a monorepo made up of three services that run independently: a React frontend, a main Express API that serves weather and restaurant data, and a standalone scraper service that checks Island Park's swimming advisories. For architecture details, the full decision log, and the technical roadmap, see [TECHNICAL_DESIGN.md](docs/TECHNICAL_DESIGN.md).
 
-To verify:
+## Technologies
+- React
+- Vite
+- React Router
+- i18next / react-i18next
+- Node.js
+- Express
+- SQLite (Node's built-in `node:sqlite`)
+- node-cron
+- Cheerio
+- Luxon
+- gray-matter
+- dotenv
+- cors
+- Docker
+- WeatherAPI
+- HTML
+- CSS
+- JavaScript
 
-1. Save a real copy of the page:
-   `curl -A "Mozilla/5.0" https://eohu.ca/en/my-environment/public-beach-water-advisories -o tests/fixtures/eohu-sample.html`
-   (or open the page, view source, and paste it in)
-2. Run `npm test` - it'll parse the fixture and tell you what status it
-   found. Check that against what the page actually shows for Island Park.
-3. If it's wrong, the fix is almost always in `findRowAncestor()` or the
-   `STATUS_PATTERNS` list in `src/scraper.js` - not a full rewrite.
+The plan is to eventually move to the full MERN stack.
 
-## Endpoints
+## How to Run
+Each service runs in its own terminal, starting with the scraper and the API.
 
-- `GET /api/island-park` - latest status:
-  ```json
-  {
-    "beach": "Island Park",
-    "status": "safe",
-    "rawRowText": "...",
-    "sourceLastUpdate": "2026-06-26 1:26 p.m.",
-    "sourceLastUpdatedAt": "2026-06-26T17:26:00.000Z",
-    "sourceUrl": "https://eohu.ca/...",
-    "checkedAt": "2026-07-16T14:00:00.000Z",
-    "stale": false
-  }
-  ```
-  Note there's no disclaimer or other display text in this response on
-  purpose - the site is bilingual (EN/FR), so any user-facing prose is
-  owned by the frontend's translation files, not baked into the API in
-  one fixed language.
+**Requirements:** [Node.js](https://nodejs.org) 22.13 or newer, and a free API key from [WeatherAPI](https://www.weatherapi.com).
 
-  `sourceLastUpdate` is the raw text as EOHU posted it (good for display).
-  `sourceLastUpdatedAt` is the same moment as a real UTC ISO timestamp
-  (good for date math - "how stale is this", formatting as "3 hours ago",
-  sorting, etc.). It's parsed assuming EOHU's times are America/Toronto
-  local time, DST-aware. If EOHU ever changes their date format and it
-  fails to parse, this comes back `null` while `sourceLastUpdate` still
-  shows the raw text as a fallback.
-  `stale: true` means the last scheduled scrape failed and this is the
-  last known-good result, not a fresh check.
-- `GET /health` - for Uptime Kuma or similar: reports whether any data
-  exists yet and the last error, if any.
+1. Clone or download this repository.
+2. **Island Park scraper:** open a terminal in the `island-park-scraper` folder, run `npm install`, then `npm start`. It runs on port 3001 and checks the advisory page right away. All of its settings have defaults, listed in `island-park-scraper/.env.example`. To run it in Docker instead, copy `.env.example` to `.env` in that folder and run `docker compose up -d --build`.
+3. **Main API:** open a terminal in the `main-site-api` folder, copy `.env.example` to `.env`, and add your WeatherAPI key to the `WEATHER_API_KEY` line. Then run `npm install` and `npm start`. The API runs on port 4000.
+4. **Restaurant data (optional):** restaurant menus are written as Markdown files, using the format described in [docs/restaurant-file-format.md](docs/restaurant-file-format.md), with an example in [docs/joes-pizza.example.md](docs/joes-pizza.example.md). To load them, set `RESTAURANT_CONTENT_DIR` in the API's `.env` to the folder containing the files and run `npm run ingest:restaurants` in the `main-site-api` folder. Without this step, the Restaurants page shows that no restaurants are listed yet.
+5. **Frontend:** open a terminal in the `frontend` folder, run `npm install`, then `npm run dev`.
+6. Open the address Vite shows in the terminal (http://localhost:5173 by default).
 
-## Running locally
+## Features
+Right now the site brings together:
 
-```bash
-cp .env.example .env
-npm install
-npm start
-```
+- **Local weather** forecasts: current conditions (temperature, feels like, wind, and humidity) plus a 3-day forecast from WeatherAPI, refreshed every 30 minutes
+- **Swimming conditions** for Island Park, pulled from the public health authority's (Eastern Ontario Health Unit) safety advisories, checked every 6 hours, with how long ago the status was updated and a link to verify it at the source
+- **Restaurant menus** for local businesses (in progress): a grid of restaurants with their own shareable pages, menus grouped into expandable categories, a size/option selector for items with more than one price, and a notice when a restaurant's information hasn't been confirmed in a while
 
-## Running in Docker
+Also included:
 
-```bash
-cp .env.example .env
-docker compose up -d --build
-```
+- Full English/French support, with `/en` and `/fr` addresses and a language switcher that keeps you on the same page
+- Accessibility for older residents: text scaled up across the whole site, stronger contrast for secondary text, and the page language set correctly for screen readers
+- Weather and swimming data that keeps showing the last good result, marked as out of date, if a scheduled check fails
+- Restaurant content written as Markdown files and validated before being loaded into a SQLite database, so one bad file can't take down the other menus
+- A "page not found" page for broken or outdated links
 
-The cache lives in `./data/cache.json`, bind-mounted from outside the
-container. That's the only stateful piece of this service - moving it to
-another box later is just copying this whole folder (including `data/`)
-and running `docker compose up -d --build` there. No manual dependency
-setup needed on the new box beyond having Docker installed.
+## Author
+Patrick Grace — [patrickmgrace.com](https://www.patrickmgrace.com/) — GitHub: [StandardGrace](https://github.com/StandardGrace)
 
-## Config (.env)
-
-| Variable | Default | Notes |
-|---|---|---|
-| `PORT` | `3001` | |
-| `CRON_SCHEDULE` | `0 */6 * * *` | Standard cron syntax. Advisories can be posted off the weekly sampling day, so checking a few times a day is reasonable. |
-| `ALLOWED_ORIGIN` | `*` | Set to `https://spotlightalexandria.ca` once that's live. |
-| `CACHE_FILE` | `./data/cache.json` | |
-| `EOHU_URL` | EOHU beach advisory page | |
+## Where it's headed
+What started as a portfolio project has grown into something with real commercial potential. The site is being prepared for a public launch, hosted from a personal homelab through Cloudflare. Looking further out, it may grow to include other local business listings, advertisements, and a local news section.
